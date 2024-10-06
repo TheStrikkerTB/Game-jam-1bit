@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://08j0kcs11mvg"]
+
+[ext_resource type="PackedScene" uid="uid://j4h1pe0lvnnw" path="res://scenes/player.tscn" id="1_6x27h"]
+[ext_resource type="PackedScene" uid="uid://cnsxivsph1ero" path="res://scenes/plataformGenerator.tscn" id="4_r5rx8"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -49)
+scale = Vector2(1e-05, 1e-05)
+zoom = Vector2(3.53, 3.53)
+
+[node name="Player" parent="." instance=ExtResource("1_6x27h")]
+position = Vector2(0, -87)
+
+[node name="PlataformGenerator" parent="." instance=ExtResource("4_r5rx8")]
