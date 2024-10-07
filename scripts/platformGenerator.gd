@@ -17,6 +17,7 @@ func _ready():
 	timer.start()
 
 	timer.connect("timeout", Callable(self, "generatePlatforms"))
+	timer.connect("timeout", Callable(self, "deletePlatform")) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -55,5 +56,9 @@ func createPlatform(x,y):
 	game.add_child(obj)
 	return obj
 	
-func deletePlatform(platform):
-	pass	
+#delete platform if outside the room ex: y > 0
+func deletePlatform():
+	for child in game.get_children():
+		if child.position.y > get_viewport_rect().size.y:  
+			child.queue_free()
+			print("foi deletado!")
