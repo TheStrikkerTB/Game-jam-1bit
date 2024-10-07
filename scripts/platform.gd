@@ -1,6 +1,6 @@
 extends Node
 
-@onready var platformSpeed = 20 
+@onready var platformSpeed = 200
 @onready var direction = Vector2(0,1)
 @onready var platform = self
 
