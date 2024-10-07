@@ -3,7 +3,6 @@ extends Node2D
 @onready var game = get_parent()
 @onready var timer = Timer.new()
 
-
 var y = -140 # Height which will be spawned
 var gap = 80 # Jump gap
 var playerPosX
@@ -17,7 +16,7 @@ func _ready():
 	timer.start()
 
 	timer.connect("timeout", Callable(self, "generatePlatforms"))
-	timer.connect("timeout", Callable(self, "deletePlatform")) 
+	timer.connect("timeout", Callable(self, "deleteNodesBelowViewPort")) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -44,21 +43,24 @@ func generatePlatforms(): # Generate platforms relative to platfrom/player posit
 	#print(plusOrMinus)
 	x = lastPlatform.position.x +(plusOrMinus)
 	createPlatform(x,y)
-	print(x)	
-		
+
 		
 func createPlatform(x,y): 
 	var scene = preload("res://scenes/plataform.tscn")
 	var obj = scene.instantiate()
+	
+	obj.name = "Platform_X " + str(x)
+	obj.position = Vector2(x, y)
 	lastPlatform = obj	
 
-	obj.position = Vector2(x, y)
 	game.add_child(obj)
 	return obj
 	
-#delete platform if outside the room ex: y > 0
-func deletePlatform():
+func deletePlatform(platform): # Delete a specific platform.
+	platform.queue_free()
+	
+func deleteNodesBelowViewPort(): # Delete nodes if outside the room ex: y > 0
 	for child in game.get_children():
-		if child.position.y > get_viewport_rect().size.y:  
-			child.queue_free()
-			print("foi deletado!")
+		if child.position.y > get_viewport_rect().size.y - 400:
+			child.queue_free()       #- 400 is arbitrary, decrease viewportSize.
+			#print("deleted: ", child.name)
