@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://j4h1pe0lvnnw"]
+[gd_scene load_steps=8 format=3 uid="uid://j4h1pe0lvnnw"]
 
 [ext_resource type="Texture2D" uid="uid://bdw4kqpsw0r15" path="res://assets/SpriteSheet.png" id="1_6yc4e"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_esrwq"]
+[ext_resource type="Texture2D" uid="uid://dpj7grwfw4x8i" path="res://assets/SpriteSheet64x64.png" id="2_dw8ub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr6dt"]
+atlas = ExtResource("2_dw8ub")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ji4vw"]
 atlas = ExtResource("1_6yc4e")
@@ -10,6 +15,9 @@ region = Rect2(0, 160, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_5wovd"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr6dt")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ji4vw")
 }],
@@ -31,5 +39,5 @@ sprite_frames = SubResource("SpriteFrames_5wovd")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -44)
 shape = SubResource("RectangleShape2D_jmmj7")
