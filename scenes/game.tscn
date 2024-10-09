@@ -8,19 +8,19 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -49)
-scale = Vector2(1e-05, 1e-05)
-zoom = Vector2(3.53, 3.53)
-
 [node name="Player" parent="." instance=ExtResource("1_6x27h")]
 position = Vector2(0, -106)
 
 [node name="PlataformGenerator" parent="." instance=ExtResource("4_r5rx8")]
-position = Vector2(282, -113)
+position = Vector2(325, -62)
 
 [node name="Plataform" parent="." instance=ExtResource("3_7w2pq")]
 position = Vector2(0, -115)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -49)
+scale = Vector2(1e-05, 1e-05)
+zoom = Vector2(3.53, 3.53)
 
 [node name="TestFloor" type="StaticBody2D" parent="."]
 
